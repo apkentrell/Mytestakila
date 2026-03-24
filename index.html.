@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cylo Tours – Discover Sri Lanka</title>
+<meta name="description" content="Cylo Tours offers unforgettable travel experiences across Sri Lanka. Explore wildlife safaris, ancient cities, beaches, and cultural tours with expert local guides.">
+<meta name="keywords" content="Sri Lanka tours, Sigiriya tours, wildlife safari Sri Lanka, Polonnaruwa tours, Sri Lanka travel, Cylo Tours">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9973A;
+    --gold-light: #E8B85A;
+    --deep: #0D1B1E;
+    --dark: #142428;
+    --mid: #1E3338;
+    --text: #F2EDE4;
+    --muted: #9DB0B5;
+    --white: #FFFFFF;
+    --card-bg: #192C31;
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+font-family: ‘DM Sans’, sans-serif;
+background: var(–deep);
+color: var(–text);
+overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+display: flex; align-items: center; justify-content: space-between;
+padding: 18px 6%;
+background: rgba(13,27,30,0.92);
+backdrop-filter: blur(14px);
+border-bottom: 1px solid rgba(201,151,58,0.15);
+}
+
+.logo {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.7rem; font-weight: 900;
+color: var(–gold);
+letter-spacing: 1px;
+text-decoration: none;
+}
+
+.logo span { color: var(–text); }
+
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+color: var(–muted); text-decoration: none;
+font-size: 0.9rem; font-weight: 500; letter-spacing: 0.5px;
+transition: color 0.3s;
+}
+.nav-links a:hover { color: var(–gold); }
+
+.nav-cta {
+background: var(–gold); color: var(–deep);
+padding: 10px 24px; border-radius: 50px;
+font-weight: 600; font-size: 0.88rem;
+text-decoration: none; letter-spacing: 0.5px;
+transition: background 0.3s, transform 0.2s;
+}
+.nav-cta:hover { background: var(–gold-light); transform: translateY(-1px); }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { width: 24px; height: 2px; background: var(–gold); border-radius: 2px; }
+
+/* ── HERO ── */
+.hero {
+min-height: 100vh;
+background:
+linear-gradient(to bottom, rgba(13,27,30,0.55) 0%, rgba(13,27,30,0.3) 40%, rgba(13,27,30,0.85) 100%),
+url(‘https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9?w=1600&q=80’) center/cover no-repeat;
+display: flex; align-items: center;
+padding: 0 6%;
+position: relative;
+}
+
+.hero-content { max-width: 680px; animation: fadeUp 1s ease both; }
+
+.hero-badge {
+display: inline-flex; align-items: center; gap: 8px;
+background: rgba(201,151,58,0.15);
+border: 1px solid rgba(201,151,58,0.35);
+padding: 6px 16px; border-radius: 50px;
+font-size: 0.78rem; font-weight: 600; letter-spacing: 1.5px;
+color: var(–gold); text-transform: uppercase;
+margin-bottom: 24px;
+}
+
+.hero h1 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(2.8rem, 6vw, 5rem);
+font-weight: 900; line-height: 1.1;
+color: var(–white);
+margin-bottom: 20px;
+}
+
+.hero h1 em { color: var(–gold); font-style: normal; }
+
+.hero p {
+font-size: 1.1rem; line-height: 1.7;
+color: rgba(242,237,228,0.85);
+margin-bottom: 36px; max-width: 520px;
+}
+
+.hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.btn-primary {
+background: var(–gold); color: var(–deep);
+padding: 15px 32px; border-radius: 50px;
+font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;
+text-decoration: none; transition: all 0.3s;
+box-shadow: 0 8px 28px rgba(201,151,58,0.35);
+}
+.btn-primary:hover { background: var(–gold-light); transform: translateY(-2px); box-shadow: 0 12px 36px rgba(201,151,58,0.45); }
+
+.btn-secondary {
+background: transparent;
+border: 1.5px solid rgba(242,237,228,0.4);
+color: var(–text); padding: 15px 32px;
+border-radius: 50px; font-weight: 500; font-size: 0.95rem;
+text-decoration: none; transition: all 0.3s;
+}
+.btn-secondary:hover { border-color: var(–gold); color: var(–gold); }
+
+.hero-stats {
+position: absolute; bottom: 48px; left: 6%;
+display: flex; gap: 40px;
+animation: fadeUp 1.2s ease 0.3s both;
+}
+
+.stat-item { text-align: center; }
+.stat-num {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.8rem; font-weight: 700; color: var(–gold);
+display: block;
+}
+.stat-label { font-size: 0.78rem; color: var(–muted); letter-spacing: 0.5px; }
+
+/* ── SEARCH BAR ── */
+.search-section {
+padding: 0 6%; margin-top: -40px; position: relative; z-index: 10;
+}
+
+.search-box {
+background: var(–card-bg);
+border: 1px solid rgba(201,151,58,0.2);
+border-radius: 16px; padding: 28px 32px;
+display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap;
+box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.search-field { flex: 1; min-width: 160px; }
+.search-field label { font-size: 0.75rem; color: var(–gold); letter-spacing: 1px; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 8px; }
+.search-field select, .search-field input {
+width: 100%; background: var(–mid);
+border: 1px solid rgba(201,151,58,0.15);
+color: var(–text); padding: 12px 16px;
+border-radius: 10px; font-family: ‘DM Sans’, sans-serif;
+font-size: 0.9rem; outline: none; transition: border 0.3s;
+}
+.search-field select:focus, .search-field input:focus { border-color: var(–gold); }
+.search-field select option { background: var(–dark); }
+
+.search-btn {
+background: var(–gold); color: var(–deep);
+border: none; padding: 13px 32px;
+border-radius: 10px; font-weight: 700; font-size: 0.95rem;
+cursor: pointer; transition: all 0.3s; white-space: nowrap;
+font-family: ‘DM Sans’, sans-serif;
+}
+.search-btn:hover { background: var(–gold-light); transform: translateY(-1px); }
+
+/* ── SECTIONS ── */
+section { padding: 90px 6%; }
+
+.section-label {
+font-size: 0.75rem; letter-spacing: 2.5px; text-transform: uppercase;
+color: var(–gold); font-weight: 600; margin-bottom: 12px;
+}
+
+.section-title {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+font-weight: 700; line-height: 1.2;
+color: var(–white); margin-bottom: 16px;
+}
+
+.section-sub {
+color: var(–muted); font-size: 1rem; line-height: 1.7;
+max-width: 520px; margin-bottom: 50px;
+}
+
+/* ── CATEGORIES ── */
+.categories { background: var(–dark); }
+
+.cat-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+gap: 16px; margin-top: 40px;
+}
+
+.cat-card {
+background: var(–card-bg);
+border: 1px solid rgba(201,151,58,0.1);
+border-radius: 14px; padding: 28px 20px;
+text-align: center; cursor: pointer;
+transition: all 0.3s; text-decoration: none;
+}
+.cat-card:hover { border-color: var(–gold); transform: translateY(-4px); background: var(–mid); }
+.cat-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+.cat-name { font-weight: 600; font-size: 0.9rem; color: var(–text); }
+.cat-count { font-size: 0.75rem; color: var(–muted); margin-top: 4px; }
+
+/* ── TOUR CARDS ── */
+.tours-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+gap: 24px; margin-top: 16px;
+}
+
+.tour-card {
+background: var(–card-bg);
+border-radius: 18px; overflow: hidden;
+border: 1px solid rgba(201,151,58,0.1);
+transition: all 0.35s; cursor: pointer;
+}
+.tour-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); border-color: rgba(201,151,58,0.3); }
+
+.card-img {
+width: 100%; height: 220px; object-fit: cover;
+transition: transform 0.4s;
+}
+.tour-card:hover .card-img { transform: scale(1.04); }
+
+.card-img-wrap { overflow: hidden; position: relative; }
+
+.card-badge {
+position: absolute; top: 14px; left: 14px;
+background: var(–gold); color: var(–deep);
+padding: 4px 12px; border-radius: 50px;
+font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px;
+}
+
+.card-body { padding: 20px; }
+.card-location { font-size: 0.78rem; color: var(–gold); font-weight: 600; letter-spacing: 0.5px; margin-bottom: 8px; }
+.card-title { font-family: ‘Playfair Display’, serif; font-size: 1.1rem; font-weight: 600; color: var(–white); margin-bottom: 10px; line-height: 1.35; }
+.card-meta { display: flex; gap: 16px; font-size: 0.8rem; color: var(–muted); margin-bottom: 16px; }
+.card-meta span { display: flex; align-items: center; gap: 5px; }
+
+.card-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(201,151,58,0.1); padding-top: 16px; }
+.card-price { font-family: ‘Playfair Display’, serif; }
+.price-from { font-size: 0.72rem; color: var(–muted); display: block; }
+.price-val { font-size: 1.25rem; font-weight: 700; color: var(–gold); }
+.card-btn {
+background: var(–gold); color: var(–deep);
+padding: 9px 20px; border-radius: 50px;
+font-weight: 700; font-size: 0.82rem; text-decoration: none;
+transition: all 0.3s;
+}
+.card-btn:hover { background: var(–gold-light); }
+
+/* ── STARS ── */
+.stars { color: var(–gold); font-size: 0.8rem; }
+
+/* ── WHY US ── */
+.why { background: var(–dark); }
+
+.why-grid {
+display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+gap: 28px; margin-top: 16px;
+}
+
+.why-card {
+background: var(–card-bg); border-radius: 16px; padding: 32px 28px;
+border: 1px solid rgba(201,151,58,0.1); transition: all 0.3s;
+}
+.why-card:hover { border-color: var(–gold); transform: translateY(-3px); }
+.why-icon { font-size: 2.2rem; margin-bottom: 18px; display: block; }
+.why-title { font-family: ‘Playfair Display’, serif; font-size: 1.1rem; color: var(–white); font-weight: 600; margin-bottom: 10px; }
+.why-desc { font-size: 0.88rem; color: var(–muted); line-height: 1.7; }
+
+/* ── TESTIMONIALS ── */
+.testi-grid {
+display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 24px; margin-top: 16px;
+}
+
+.testi-card {
+background: var(–card-bg); border-radius: 16px; padding: 28px;
+border: 1px solid rgba(201,151,58,0.1);
+}
+
+.testi-stars { color: var(–gold); font-size: 1rem; margin-bottom: 14px; }
+.testi-text { font-size: 0.92rem; color: var(–muted); line-height: 1.75; margin-bottom: 20px; font-style: italic; }
+.testi-author { display: flex; align-items: center; gap: 12px; }
+.testi-avatar {
+width: 44px; height: 44px; border-radius: 50%;
+background: var(–gold); display: flex; align-items: center; justify-content: center;
+font-weight: 700; font-size: 1rem; color: var(–deep);
+}
+.testi-name { font-weight: 600; font-size: 0.9rem; color: var(–white); }
+.testi-origin { font-size: 0.75rem; color: var(–muted); }
+
+/* ── CTA ── */
+.cta-section {
+background:
+linear-gradient(135deg, rgba(13,27,30,0.9) 0%, rgba(20,36,40,0.85) 100%),
+url(‘https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?w=1400&q=80’) center/cover no-repeat;
+text-align: center; padding: 100px 6%;
+border-top: 1px solid rgba(201,151,58,0.15);
+border-bottom: 1px solid rgba(201,151,58,0.15);
+}
+
+.cta-section .section-title { margin: 0 auto 16px; }
+.cta-section .section-sub { margin: 0 auto 36px; text-align: center; }
+
+/* ── FOOTER ── */
+footer {
+background: var(–deep); padding: 60px 6% 30px;
+border-top: 1px solid rgba(201,151,58,0.15);
+}
+
+.footer-grid {
+display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+gap: 40px; margin-bottom: 50px;
+}
+
+.footer-brand .logo { font-size: 1.5rem; display: block; margin-bottom: 14px; }
+.footer-brand p { font-size: 0.88rem; color: var(–muted); line-height: 1.7; max-width: 260px; }
+
+.footer-col h4 { font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; color: var(–gold); margin-bottom: 18px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a { color: var(–muted); text-decoration: none; font-size: 0.88rem; transition: color 0.3s; }
+.footer-col ul li a:hover { color: var(–gold); }
+
+.footer-bottom {
+border-top: 1px solid rgba(201,151,58,0.1);
+padding-top: 24px; display: flex;
+justify-content: space-between; align-items: center; flex-wrap: gap;
+}
+
+.footer-bottom p { font-size: 0.82rem; color: var(–muted); }
+
+.social-links { display: flex; gap: 12px; }
+.social-links a {
+width: 38px; height: 38px; border-radius: 50%;
+background: var(–card-bg); border: 1px solid rgba(201,151,58,0.2);
+display: flex; align-items: center; justify-content: center;
+color: var(–muted); text-decoration: none; font-size: 0.85rem;
+transition: all 0.3s;
+}
+.social-links a:hover { background: var(–gold); color: var(–deep); border-color: var(–gold); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(30px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+opacity: 0; transform: translateY(24px);
+transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+.nav-links, .nav-cta { display: none; }
+.hamburger { display: flex; }
+
+```
+.hero-stats { gap: 24px; }
+.stat-num { font-size: 1.4rem; }
+
+.search-box { flex-direction: column; }
+.search-btn { width: 100%; }
+
+.footer-grid { grid-template-columns: 1fr 1fr; }
+.footer-brand { grid-column: 1/-1; }
+
+.hero-btns { flex-direction: column; }
+.btn-primary, .btn-secondary { text-align: center; }
+```
+
+}
+
+@media (max-width: 480px) {
+.footer-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <a href="#" class="logo">Cylo<span>Tours</span></a>
+  <ul class="nav-links">
+    <li><a href="#tours">Tours</a></li>
+    <li><a href="#categories">Experiences</a></li>
+    <li><a href="#why">About Us</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Book Now</a>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✦ Sri Lanka's Premier Tour Company</div>
+    <h1>Discover the <em>Soul</em> of Sri Lanka</h1>
+    <p>From ancient kingdoms to wild safaris, pristine beaches to misty highlands — Cylo Tours crafts unforgettable journeys across the Pearl of the Indian Ocean.</p>
+    <div class="hero-btns">
+      <a href="#tours" class="btn-primary">Explore Tours</a>
+      <a href="#contact" class="btn-secondary">Talk to an Expert</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <span class="stat-num">500+</span>
+      <span class="stat-label">Happy Tourists</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">30+</span>
+      <span class="stat-label">Tour Packages</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">4.9★</span>
+      <span class="stat-label">Average Rating</span>
+    </div>
+  </div>
+</section>
+
+<!-- SEARCH -->
+
+<div class="search-section">
+  <div class="search-box reveal">
+    <div class="search-field">
+      <label>Destination</label>
+      <select>
+        <option>All Sri Lanka</option>
+        <option>Sigiriya & Dambulla</option>
+        <option>Polonnaruwa</option>
+        <option>Kandy</option>
+        <option>Ella & Hill Country</option>
+        <option>Mirissa & South Coast</option>
+        <option>Yala National Park</option>
+        <option>Nuwara Eliya</option>
+        <option>Galle</option>
+      </select>
+    </div>
+    <div class="search-field">
+      <label>Tour Type</label>
+      <select>
+        <option>All Types</option>
+        <option>Wildlife Safari</option>
+        <option>Cultural & Heritage</option>
+        <option>Beach & Water</option>
+        <option>Adventure</option>
+        <option>Photography Tours</option>
+        <option>Ayurveda & Wellness</option>
+      </select>
+    </div>
+    <div class="search-field">
+      <label>Duration</label>
+      <select>
+        <option>Any Duration</option>
+        <option>Half Day</option>
+        <option>Full Day</option>
+        <option>2–3 Days</option>
+        <option>4–7 Days</option>
+        <option>7+ Days</option>
+      </select>
+    </div>
+    <div class="search-field">
+      <label>Travel Date</label>
+      <input type="date">
+    </div>
+    <button class="search-btn">🔍 Search Tours</button>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+
+<section class="categories" id="categories">
+  <div class="section-label">Browse by Experience</div>
+  <div class="section-title">What Kind of Adventure <br>Are You Looking For?</div>
+  <div class="cat-grid reveal">
+    <a href="#tours" class="cat-card"><span class="cat-icon">🐘</span><div class="cat-name">Wildlife Safari</div><div class="cat-count">8 Tours</div></a>
+    <a href="#tours" class="cat-card"><span class="cat-icon">🏛️</span><div class="cat-name">Ancient Cities</div><div class="cat-count">6 Tours</div></a>
+    <a href="#tours" class="cat-card"><span class="cat-icon">🏖️</span><div class="cat-name">Beach & Coast</div><div class="cat-count">5 Tours</div></a>
+    <a href="#tours" class="cat-card"><span class="cat-icon">🌿</span><div class="cat-name">Tea Country</div><div class="cat-count">4 Tours</div></a>
+    <a href="#tours" class="cat-card"><span class="cat-icon">🧘</span><div class="cat-name">Wellness</div><div class="cat-count">3 Tours</div></a>
+    <a href="#tours" class="cat-card"><span class="cat-icon">📸</span><div class="cat-name">Photography</div><div class="cat-count">4 Tours</div></a>
+    <a href="#tours" class="cat-card"><span class="cat-icon">🚂</span><div class="cat-name">Scenic Trains</div><div class="cat-count">2 Tours</div></a>
+    <a href="#tours" class="cat-card"><span class="cat-icon">🌊</span><div class="cat-name">Water Sports</div><div class="cat-count">3 Tours</div></a>
+  </div>
+</section>
+
+<!-- TOURS -->
+
+<section id="tours">
+  <div class="section-label">Most Popular</div>
+  <div class="section-title">Top Tour Packages</div>
+  <div class="section-sub">Hand-picked experiences crafted by our local expert guides for the ultimate Sri Lanka adventure.</div>
+
+  <div class="tours-grid reveal">
+
+```
+<!-- Card 1 -->
+<div class="tour-card">
+  <div class="card-img-wrap">
+    <img class="card-img" src="https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9?w=600&q=80" alt="Sigiriya Rock Fortress">
+    <span class="card-badge">Best Seller</span>
+  </div>
+  <div class="card-body">
+    <div class="card-location">📍 Sigiriya, Central Province</div>
+    <div class="card-title">Sigiriya Rock Fortress & Dambulla Cave Temple</div>
+    <div class="card-meta">
+      <span>🕐 Full Day</span>
+      <span>👥 Up to 12</span>
+      <span class="stars">★★★★★</span>
+    </div>
+    <div class="card-footer">
+      <div class="card-price">
+        <span class="price-from">From</span>
+        <span class="price-val">$45 USD</span>
+      </div>
+      <a href="#contact" class="card-btn">Book Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- Card 2 -->
+<div class="tour-card">
+  <div class="card-img-wrap">
+    <img class="card-img" src="https://images.unsplash.com/photo-1615529182904-14819c35db37?w=600&q=80" alt="Yala Safari">
+    <span class="card-badge">Wildlife</span>
+  </div>
+  <div class="card-body">
+    <div class="card-location">📍 Yala National Park</div>
+    <div class="card-title">Yala National Park Safari – Leopard & Elephant Spotting</div>
+    <div class="card-meta">
+      <span>🕐 Full Day</span>
+      <span>👥 Up to 6</span>
+      <span class="stars">★★★★★</span>
+    </div>
+    <div class="card-footer">
+      <div class="card-price">
+        <span class="price-from">From</span>
+        <span class="price-val">$70 USD</span>
+      </div>
+      <a href="#contact" class="card-btn">Book Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- Card 3 -->
+<div class="tour-card">
+  <div class="card-img-wrap">
+    <img class="card-img" src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?w=600&q=80" alt="Kandy">
+    <span class="card-badge">Cultural</span>
+  </div>
+  <div class="card-body">
+    <div class="card-location">📍 Kandy, Central Province</div>
+    <div class="card-title">Kandy City Tour – Temple of the Tooth & Cultural Show</div>
+    <div class="card-meta">
+      <span>🕐 Full Day</span>
+      <span>👥 Up to 15</span>
+      <span class="stars">★★★★☆</span>
+    </div>
+    <div class="card-footer">
+      <div class="card-price">
+        <span class="price-from">From</span>
+        <span class="price-val">$38 USD</span>
+      </div>
+      <a href="#contact" class="card-btn">Book Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- Card 4 -->
+<div class="tour-card">
+  <div class="card-img-wrap">
+    <img class="card-img" src="https://images.unsplash.com/photo-1604995215588-53a5d31c2bb4?w=600&q=80" alt="Ella Train">
+    <span class="card-badge">Scenic</span>
+  </div>
+  <div class="card-body">
+    <div class="card-location">📍 Ella, Uva Province</div>
+    <div class="card-title">Ella Hill Country – Nine Arch Bridge & Little Adam's Peak</div>
+    <div class="card-meta">
+      <span>🕐 Full Day</span>
+      <span>👥 Up to 10</span>
+      <span class="stars">★★★★★</span>
+    </div>
+    <div class="card-footer">
+      <div class="card-price">
+        <span class="price-from">From</span>
+        <span class="price-val">$55 USD</span>
+      </div>
+      <a href="#contact" class="card-btn">Book Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- Card 5 -->
+<div class="tour-card">
+  <div class="card-img-wrap">
+    <img class="card-img" src="https://images.unsplash.com/photo-1559494007-9f5847c49d94?w=600&q=80" alt="Beach Sri Lanka">
+    <span class="card-badge">Beach</span>
+  </div>
+  <div class="card-body">
+    <div class="card-location">📍 Mirissa, Southern Province</div>
+    <div class="card-title">Mirissa Whale Watching & Beach Day</div>
+    <div class="card-meta">
+      <span>🕐 Full Day</span>
+      <span>👥 Up to 20</span>
+      <span class="stars">★★★★★</span>
+    </div>
+    <div class="card-footer">
+      <div class="card-price">
+        <span class="price-from">From</span>
+        <span class="price-val">$65 USD</span>
+      </div>
+      <a href="#contact" class="card-btn">Book Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- Card 6 -->
+<div class="tour-card">
+  <div class="card-img-wrap">
+    <img class="card-img" src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?w=600&q=80" alt="Polonnaruwa">
+    <span class="card-badge">Heritage</span>
+  </div>
+  <div class="card-body">
+    <div class="card-location">📍 Polonnaruwa, North Central</div>
+    <div class="card-title">Polonnaruwa Ancient Kingdom – Full Heritage Tour</div>
+    <div class="card-meta">
+      <span>🕐 Full Day</span>
+      <span>👥 Up to 12</span>
+      <span class="stars">★★★★★</span>
+    </div>
+    <div class="card-footer">
+      <div class="card-price">
+        <span class="price-from">From</span>
+        <span class="price-val">$40 USD</span>
+      </div>
+      <a href="#contact" class="card-btn">Book Now</a>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- WHY US -->
+
+<section class="why" id="why">
+  <div class="section-label">Why Cylo Tours</div>
+  <div class="section-title">Travel With Confidence</div>
+  <div class="section-sub">We are local Sri Lanka experts who care deeply about giving you an authentic, safe, and memorable experience.</div>
+  <div class="why-grid reveal">
+    <div class="why-card">
+      <span class="why-icon">🧭</span>
+      <div class="why-title">Expert Local Guides</div>
+      <div class="why-desc">Our guides are born and raised in Sri Lanka with deep knowledge of history, wildlife, and culture — not just tour scripts.</div>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">💰</span>
+      <div class="why-title">Transparent Pricing</div>
+      <div class="why-desc">No hidden fees, no surprises. What you see is what you pay — including entrance fees, transport and meals where stated.</div>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">🛡️</span>
+      <div class="why-title">Safe & Reliable</div>
+      <div class="why-desc">All our vehicles are fully insured and maintained. Your safety is our highest priority on every single journey.</div>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">🎯</span>
+      <div class="why-title">Customized Trips</div>
+      <div class="why-desc">Every traveler is different. Tell us your interests and budget and we'll design the perfect Sri Lanka itinerary just for you.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section id="reviews">
+  <div class="section-label">What Tourists Say</div>
+  <div class="section-title">Real Reviews from Real Travelers</div>
+  <div class="section-sub">Don't take our word for it — here's what our guests say about their Cylo Tours experience.</div>
+  <div class="testi-grid reveal">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"Absolutely incredible experience. Our guide knew everything about Sigiriya and made the whole day feel like stepping back in time. Highly recommend Cylo Tours to anyone visiting Sri Lanka!"</div>
+      <div class="testi-author">
+        <div class="testi-avatar">S</div>
+        <div>
+          <div class="testi-name">Sarah Mitchell</div>
+          <div class="testi-origin">🇬🇧 United Kingdom</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"The Yala safari exceeded all my expectations. We spotted three leopards and a herd of elephants! The jeep and guide were top quality. Will definitely book again."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">M</div>
+        <div>
+          <div class="testi-name">Marco Bianchi</div>
+          <div class="testi-origin">🇮🇹 Italy</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"Best tour company in Sri Lanka, no question. Transparent pricing, punctual, friendly and deeply passionate about sharing their country. A truly authentic experience."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">A</div>
+        <div>
+          <div class="testi-name">Aiko Tanaka</div>
+          <div class="testi-origin">🇯🇵 Japan</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+
+<section class="cta-section">
+  <div class="section-label">Ready to Explore?</div>
+  <div class="section-title" style="max-width:600px;margin:0 auto 16px;">Your Sri Lanka Adventure Starts Here</div>
+  <p class="section-sub" style="text-align:center;margin:0 auto 36px;">Contact us today and let our experts design the perfect trip for you. No obligation, just great advice.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+    <a href="#contact" class="btn-primary">Plan My Trip</a>
+    <a href="https://wa.me/94XXXXXXXXX" class="btn-secondary">💬 WhatsApp Us</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact" style="background:var(--dark);">
+  <div class="section-label">Get In Touch</div>
+  <div class="section-title">Book Your Tour Today</div>
+  <div class="section-sub">Fill in your details and our team will get back to you within a few hours.</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:860px;" class="reveal">
+    <div>
+      <div style="margin-bottom:20px;">
+        <label style="font-size:0.78rem;color:var(--gold);letter-spacing:1px;text-transform:uppercase;font-weight:600;display:block;margin-bottom:8px;">Your Name</label>
+        <input type="text" placeholder="John Smith" style="width:100%;background:var(--card-bg);border:1px solid rgba(201,151,58,0.2);color:var(--text);padding:13px 16px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;">
+      </div>
+      <div style="margin-bottom:20px;">
+        <label style="font-size:0.78rem;color:var(--gold);letter-spacing:1px;text-transform:uppercase;font-weight:600;display:block;margin-bottom:8px;">Email Address</label>
+        <input type="email" placeholder="john@example.com" style="width:100%;background:var(--card-bg);border:1px solid rgba(201,151,58,0.2);color:var(--text);padding:13px 16px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;">
+      </div>
+      <div style="margin-bottom:20px;">
+        <label style="font-size:0.78rem;color:var(--gold);letter-spacing:1px;text-transform:uppercase;font-weight:600;display:block;margin-bottom:8px;">Interested Tour</label>
+        <select style="width:100%;background:var(--card-bg);border:1px solid rgba(201,151,58,0.2);color:var(--text);padding:13px 16px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;">
+          <option>Select a Tour</option>
+          <option>Sigiriya & Dambulla</option>
+          <option>Yala Safari</option>
+          <option>Kandy City Tour</option>
+          <option>Ella Hill Country</option>
+          <option>Mirissa Whale Watching</option>
+          <option>Polonnaruwa Heritage</option>
+          <option>Custom Package</option>
+        </select>
+      </div>
+      <div style="margin-bottom:24px;">
+        <label style="font-size:0.78rem;color:var(--gold);letter-spacing:1px;text-transform:uppercase;font-weight:600;display:block;margin-bottom:8px;">Message</label>
+        <textarea placeholder="Tell us your travel dates, group size and any special requests..." rows="4" style="width:100%;background:var(--card-bg);border:1px solid rgba(201,151,58,0.2);color:var(--text);padding:13px 16px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;resize:vertical;"></textarea>
+      </div>
+      <button class="btn-primary" style="border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.95rem;width:100%;padding:15px;">Send Enquiry ✈️</button>
+    </div>
+    <div>
+      <div style="background:var(--card-bg);border-radius:16px;padding:32px;border:1px solid rgba(201,151,58,0.15);margin-bottom:20px;">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);margin-bottom:20px;">Contact Info</h3>
+        <p style="font-size:0.88rem;color:var(--muted);margin-bottom:12px;">📞 +94 XX XXX XXXX</p>
+        <p style="font-size:0.88rem;color:var(--muted);margin-bottom:12px;">📧 hello@cylotours.lk</p>
+        <p style="font-size:0.88rem;color:var(--muted);margin-bottom:12px;">📍 Habarana, North Central Province, Sri Lanka</p>
+        <p style="font-size:0.88rem;color:var(--muted);">🕐 Mon–Sun: 7:00 AM – 8:00 PM</p>
+      </div>
+      <div style="background:var(--card-bg);border-radius:16px;padding:32px;border:1px solid rgba(201,151,58,0.15);">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);margin-bottom:16px;">Quick Response</h3>
+        <p style="font-size:0.88rem;color:var(--muted);line-height:1.7;">For the fastest reply, message us on WhatsApp. We typically respond within 30 minutes during business hours.</p>
+        <a href="https://wa.me/94XXXXXXXXX" style="display:inline-block;margin-top:16px;background:#25D366;color:#fff;padding:12px 24px;border-radius:50px;font-weight:700;font-size:0.88rem;text-decoration:none;">💬 Chat on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">Cylo<span>Tours</span></a>
+      <p>Sri Lanka's most trusted local tour company. We show you the real Sri Lanka — beyond the guidebook.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tours</h4>
+      <ul>
+        <li><a href="#">Wildlife Safaris</a></li>
+        <li><a href="#">Cultural Tours</a></li>
+        <li><a href="#">Beach Tours</a></li>
+        <li><a href="#">Hill Country</a></li>
+        <li><a href="#">Custom Packages</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Guides</a></li>
+        <li><a href="#">Reviews</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Booking Policy</a></li>
+        <li><a href="#">Cancellations</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Cylo Tours. All rights reserved. Sri Lanka's Premier Tour Company.</p>
+    <div class="social-links">
+      <a href="#">f</a>
+      <a href="#">in</a>
+      <a href="#">📸</a>
+      <a href="#">▶</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Stagger tour cards
+  document.querySelectorAll('.tour-card').forEach((card, i) => {
+    card.style.animationDelay = `${i * 0.08}s`;
+  });
+
+  // Hamburger
+  function toggleMenu() {
+    const links = document.querySelector('.nav-links');
+    const cta = document.querySelector('.nav-cta');
+    if (links.style.display === 'flex') {
+      links.style.display = 'none';
+      cta.style.display = 'none';
+    } else {
+      links.style.display = 'flex';
+      links.style.flexDirection = 'column';
+      links.style.position = 'absolute';
+      links.style.top = '70px';
+      links.style.left = '0';
+      links.style.right = '0';
+      links.style.background = 'rgba(13,27,30,0.98)';
+      links.style.padding = '20px 6%';
+      links.style.gap = '20px';
+      cta.style.display = 'none';
+    }
+  }
+</script>
+
+</body>
+</html>
